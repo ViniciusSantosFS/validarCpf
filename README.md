@@ -1,0 +1,1 @@
+APP que verifica se o cpf é valido, se o cpf retornado no console for igual o cpf inserido, o cpf inserido é valido
