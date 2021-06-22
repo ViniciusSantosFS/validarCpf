@@ -17,11 +17,18 @@ const selectAmountCpfDigits = (value='', amount) =>{
     return value
 }
 
-const cpfIsValid = (cpf) =>{
-    return cpfFinal === cpf ? `${cpf} é um cpf valido` : `${cpf} é um cpf invalido`
+const isSequence = () =>{
+    const sequence = cpfLimpo[0].repeat(cpfLimpo.length)
+    return sequence === cpfLimpo
 }
-const cpf1 = '116.168.040-33'//coloque o cpf aqui
-const cpfLimpo = cpf1.replace(/\D+/g,'')//troca tudo que não é número para ''
+
+const cpfIsValid = (cpf) =>{
+    if(isSequence()) return `${userCpf} é um cpf invalido`
+    return cpfFinal === cpf ? `${userCpf} é um cpf valido` : `${userCpf} é um cpf invalido`
+}
+
+const userCpf = '111.111.111-11'//coloque o cpf aqui
+const cpfLimpo = userCpf.replace(/\D+/g,'')//troca tudo que não é número para ''
 const cpfNoveDigitos = selectAmountCpfDigits('', 9)
 const cpfDezDigitos = selectAmountCpfDigits('', 10)
 const firstDigit = getLastDigit([], 11,cpfNoveDigitos)
