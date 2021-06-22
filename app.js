@@ -17,17 +17,15 @@ const selectAmountCpfDigits = (value='', amount) =>{
     return value
 }
 
+const cpfIsValid = (cpf) =>{
+    return cpfFinal === cpf ? `${cpf} é um cpf valido` : `${cpf} é um cpf invalido`
+}
 const cpf1 = '116.168.040-33'//coloque o cpf aqui
 const cpfLimpo = cpf1.replace(/\D+/g,'')//troca tudo que não é número para ''
 const cpfNoveDigitos = selectAmountCpfDigits('', 9)
 const cpfDezDigitos = selectAmountCpfDigits('', 10)
-
-
-
 const firstDigit = getLastDigit([], 11,cpfNoveDigitos)
 const secondDigit = getLastDigit([], 12,cpfDezDigitos)
+const cpfFinal = cpfNoveDigitos.concat(firstDigit, secondDigit)
 
-
-const cpfIsValid = cpfNoveDigitos.concat(firstDigit, secondDigit)
-
-console.log(cpfIsValid)
+console.log(cpfIsValid(cpfLimpo))
